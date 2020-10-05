@@ -1,0 +1,37 @@
+$main: #00A7E5
+
+.btn-outline-primary
+  color: $main
+  border-color: $main
+  &:hover
+    background-color: $main
+    border-color: $main
+  &:focus
+    box-shadow: 0 0 0 0.1rem rgba($main,.5)
+  &.disabled
+    color: $main
+
+.form-check-input
+  &:checked
+    background-color: $main
+    border-color: $main
+  &:focus
+    box-shadow: 0 0 0 0.1rem rgba($main,.5)
+
+body
+  background: #F5F5F5
+
+a
+  color: $main
+  &:hover, &:focus
+    color: #008BBF
+
+#map
+  height: 80vh
+
+@media (max-width: 640px)
+  .d-flex
+    flex-wrap: wrap
+    p
+      margin-top: 1rem
+      width: 100%
