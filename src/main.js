@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {  
 
-  let zoo = [24.9983469, 121.5810358]; // 預設中心點為台北市動物園
+  const zoo = [24.9983469, 121.5810358]; // 預設中心點為台北市動物園
 
   // 建立地圖
   const map = L.map('map', {
