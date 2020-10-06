@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     moveTo(map); // 移動到指定座標（平滑 || 縮放 效果）
     panBy(map); // 移動 x, y 位置
   }
-  map.on('locationerror', errorHandler(e));
+  map.on('locationerror', errorHandler);
 
   // 使用者提供位置
   function foundHandler(e) {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     moveTo(map); // 移動到指定座標（平滑 || 縮放 效果）
     panBy(map); // 移動 x, y 位置
   }
-  map.on('locationfound', foundHandler(e));
+  map.on('locationfound', foundHandler);
 
 
 
