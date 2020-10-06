@@ -29,21 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
   map.locate({ setView: true, watch: true, maxZoom: 18, enableHighAccuracy: true });
 
   // 使用者不提供位置
-  map.on('locationerror', e => {
+  function errorHandler() {
     console.log("e", e);
     window.alert('無法判斷您的所在位置，無法使用此功能。預設地點將為 台北市動物園');
     map.setView(zoo, 18); // 中心移到動物園
     moveTo(map); // 移動到指定座標（平滑 || 縮放 效果）
     panBy(map); // 移動 x, y 位置
-  });
+  }
+  map.on('locationerror', errorHandler);
 
   // 使用者提供位置
-  map.on('locationfound', e => {
+  function foundHandler() {
     console.log("e", e);
     marker.setLatLng(e.latlng); // 移動 marker
     moveTo(map); // 移動到指定座標（平滑 || 縮放 效果）
     panBy(map); // 移動 x, y 位置
-  });
+  }
+  map.on('locationfound', foundHandler);
 
 
 
