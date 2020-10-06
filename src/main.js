@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 建立 marker
   const customIcon = L.icon({
-    iconUrl: 'https://letswrite.tw/leaflet/dist/dot.svg',
+    iconUrl: 'https://letswritetw.github.io/letswrite-leaflet-osm-locate/dist/dot.svg',
     iconSize: [16, 16],
   });
   const marker = L.marker(zoo, {
