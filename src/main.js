@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 跟使用者要位置
   // 參考文件：https://leafletjs.com/examples/mobile/、https://leafletjs.com/reference-1.7.1.html#map-locate
-  map.locate({ setView: true, watch: true, maxZoom: 18 });
+  map.locate({ setView: true, watch: true, maxZoom: 18, enableHighAccuracy: true });
 
   // 使用者不提供位置
   map.on('locationerror', e => {
