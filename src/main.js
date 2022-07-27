@@ -3,11 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const zoo = [24.9983469, 121.5810358]; // 預設中心點為台北市動物園
 
   // 建立地圖
-  const map = L.map('map', {
-    attributionControl: true, // 是否秀出 leaflet
+  let zoom = 17; // 0-18
+  let map = L.map('map').setView(zoo, zoom);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap', // 商用時必須要有版權出處
     zoomControl: true , // 是否秀出 - + 按鈕
-  });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+  }).addTo(map);
 
 
 
@@ -25,8 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // 跟使用者要位置
-  // 參考文件：https://leafletjs.com/examples/mobile/、https://leafletjs.com/reference-1.7.1.html#map-locate
-  map.locate({ setView: true, watch: true, maxZoom: 18, enableHighAccuracy: true });
+  // 參考文件：https://leafletjs.com/examples/mobile/、https://leafletjs.com/reference.html#map-locate
+  map.locate({
+    setView: false,
+    watch: true,
+    maxZoom: 18,
+    enableHighAccuracy: true
+  });
 
   // 使用者不提供位置
   function errorHandler(e) {
@@ -40,7 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 使用者提供位置
   function foundHandler(e) {
-    console.log("e", e);
+    console.log('e', e);
+    map.panTo(e.latlng); // 移動地圖中心點到使用者所在位置
     marker.setLatLng(e.latlng); // 移動 marker
     moveTo(map); // 移動到指定座標（平滑 || 縮放 效果）
     panBy(map); // 移動 x, y 位置
